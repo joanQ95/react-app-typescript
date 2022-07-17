@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [subs, setSubs] = useState([
+    {
+      nick: 'dapelu',
+      subMonths: 3,
+      avatar: 'https://i.pravatar.cc/150?u=dapelu',
+      description: 'Dapelu'
+    },
+    {
+      nick: 'sergio',
+      subMonths: 5,
+    }
+  ])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>midu subs</h1>
+      <ul>
+        {
+          subs.map(e=>{
+            return (
+              <li key={e.nick}>
+                <img src={e.avatar} alt={`Avatar for ${e.nick}`}/>
+                <h4>{e.nick} (<small>{e.subMonths}</small>)</h4>
+              </li>
+            )
+          })
+        }
+      </ul>
     </div>
   );
 }
